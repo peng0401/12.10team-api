@@ -11,7 +11,7 @@ router.get('/api/get/list', function(req, res, next) {
   let sqls = `select count(*) from week where type=${type}`
 
   query(sqls).then((data) => {
-    var total = Math.ceil(data[0]['count(0)'])
+    var total = Math.ceil(data[0]['count(*)']/page_size)
     selectList(total)
   }).catch((err) => {
     res.json({code : 0,msg : err})
